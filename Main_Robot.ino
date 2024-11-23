@@ -50,19 +50,19 @@ void loop() {
   
   if (irSensorStateL == LOW) {  // If an object is detected
     myServo.write(50);          // Turn the servo to 90 degrees
-    delay(300);
+    delay(200);
     moveLeft();
   }
 
   if (irSensorStateR == LOW) {  // If an object is detected
     myServo.write(120);          // Turn the servo to 90 degrees
-    delay(300);
+    delay(200);
     moveRight();
   }
 
   if(irSensorStateR == HIGH && irSensorStateL == HIGH){
     myServo.write(80); 
-    delay(300);
+    delay(200);
 
     long distance = readDistance();
 
@@ -83,7 +83,7 @@ void moveFront(){ // Move forward and set arm positions
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
 
-  delay(100);  // Run for a short time before stopping
+  delay(200);  // Run for a short time before stopping
 }
 
 void moveLeft(){ // Turn left and set arm positions
@@ -93,7 +93,13 @@ void moveLeft(){ // Turn left and set arm positions
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
   
-  delay(100);  // Run for a short time before stopping
+  delay(200);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+
+  delay(100);   // Run for a short time before stopping
   Stop();
 }
 
@@ -104,7 +110,13 @@ void moveRight(){ // Turn right and set arm positions
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 
-  delay(100);  // Run for a short time before stopping
+  delay(200);  // Run for a short time before stopping
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+
+  delay(100);   // Run for a short time before stopping
   Stop();
 }
 
