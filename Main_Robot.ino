@@ -66,7 +66,7 @@ void loop() {
 
     long distance = readDistance();
 
-    if(2 > distance < 15){
+    if(distance < 15){
       moveFront();
     }else{
       Stop();
@@ -84,6 +84,8 @@ void moveFront(){ // Move forward and set arm positions
   digitalWrite(IN4, LOW);
 
   delay(200);  // Run for a short time before stopping
+  Serial.print("Front");
+
 }
 
 void moveLeft(){ // Turn left and set arm positions
@@ -100,6 +102,7 @@ void moveLeft(){ // Turn left and set arm positions
   digitalWrite(IN4, LOW);
 
   delay(100);   // Run for a short time before stopping
+  Serial.print("Left");
   Stop();
 }
 
@@ -117,6 +120,7 @@ void moveRight(){ // Turn right and set arm positions
   digitalWrite(IN4, LOW);
 
   delay(100);   // Run for a short time before stopping
+  Serial.print("Right");
   Stop();
 }
 
@@ -126,6 +130,7 @@ void Stop(){
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
+  Serial.print("Stop");
 }
 
 void Servo(){
@@ -149,11 +154,11 @@ long readDistance() {
   long duration = pulseIn(echoPin, HIGH);
   long distance = duration * 0.034 / 2;  // Calculate distance in cm
 
-/*
+
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
-*/
+
 
   return distance;
 }
